@@ -1,0 +1,46 @@
+<div class="grid grid-cols-3 h-full">
+    <div class="example-container">
+        <h2>To do</h2>
+
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList, inProgressList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+
+            @for (item of todo; track $index) {
+
+            <app-task-card [title]="item.title" [content]="item.content" cdkDrag class="example-box"></app-task-card>
+
+            }
+        </div>
+    </div>
+
+    <div class="example-container">
+        <h2>In Progress</h2>
+
+        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+            [cdkDropListConnectedTo]="[todoList, doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+
+            @for (item of inProgress; track $index) {
+
+            <app-task-card [title]="item.title" [content]="item.content" cdkDrag class="example-box"></app-task-card>
+
+
+            }
+        </div>
+    </div>
+    <div class="example-container">
+        <h2>Done</h2>
+
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList, inProgressList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+
+            @for (item of done; track $index) {
+
+            <app-task-card [title]="item.title" [content]="item.content" cdkDrag class="example-box"></app-task-card>
+
+
+            }
+        </div>
+    </div>
+</div>

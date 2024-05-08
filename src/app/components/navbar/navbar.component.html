@@ -4,5 +4,7 @@
         <span class="flex-1"></span>
         <button mat-mini-fab color="link" [routerLink]="['/login']"><mat-icon>person</mat-icon></button>
         <button mat-mini-fab color="link" [routerLink]="['/register']"><mat-icon>people</mat-icon></button>
+        <button mat-mini-fab color="link" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+        <button mat-mini-fab color="link" [routerLink]="['/addtask']"><mat-icon>add</mat-icon></button>
     </mat-toolbar>
 </p>

@@ -4,6 +4,12 @@ export interface Task {
   createdAt: Date;
   title: string;
   content: string;
-  isCompleted: boolean;
-  isInProgress: boolean;
+  completed: boolean;
+  inProgress: boolean;
+}
+
+export enum TaskStatus {
+  IN_PROGRESS,
+  TODO,
+  DONE,
 }

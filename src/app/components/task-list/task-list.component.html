@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-4 items-center h-full border border-black p-8" cdkDropList [cdkDropListData]="tasks"
+    (cdkDropListDropped)="drop($event)">
+    <!-- <span class="font-bold text-2xl">{{title}}</span>
+    <div class="flex flex-col gap-y-4">
+        <app-task-card></app-task-card>
+        <app-task-card></app-task-card>
+        <app-task-card></app-task-card>
+    </div> -->
+    <div cdkDrag class="flex flex-col">
+
+        @for (task of tasks; track $index) {
+        {{task}}
+        }
+    </div>
+
+</div>

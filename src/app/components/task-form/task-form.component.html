@@ -1,0 +1,14 @@
+<div class="flex items-center h-full">
+    <form (ngSubmit)="onSubmit()" [formGroup]="taskForm" class="w-full flex flex-col">
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input type="text" matInput formControlName="title">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Content</mat-label>
+            <textarea type="text" matInput formControlName="content"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Add task</button>
+
+    </form>
+</div>
