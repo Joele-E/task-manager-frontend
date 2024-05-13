@@ -15,6 +15,7 @@ import { TaskService } from '../../services/task.service';
 import { MatInputModule } from '@angular/material/input';
 import { first } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task-form',
@@ -46,12 +47,13 @@ export class TaskFormComponent {
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   onSubmit() {
     if (this.taskForm.valid) {
-      console.log('object');
+      this.dialog.closeAll();
       this.taskService
         .addTask(this.taskForm.value)
         .pipe(first())

@@ -13,3 +13,7 @@ export enum TaskStatus {
   TODO,
   DONE,
 }
+
+export class TaskImpl implements Partial<Task> {
+  constructor() {}
+}

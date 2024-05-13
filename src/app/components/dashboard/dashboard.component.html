@@ -1,46 +1,67 @@
-<div class="grid grid-cols-3 h-full">
-    <div class="example-container">
-        <h2>To do</h2>
-
-        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
-            [cdkDropListConnectedTo]="[doneList, inProgressList]" class="example-list"
-            (cdkDropListDropped)="drop($event)">
-
-            @for (item of todo; track $index) {
-
-            <app-task-card [title]="item.title" [content]="item.content" cdkDrag class="example-box"></app-task-card>
-
-            }
-        </div>
+<div class="h-full flex flex-col myclass p-4">
+    <div class="absolute bottom-0 right-0 py-16 pr-4 sm:hidden z-10">
+        <button mat-fab (click)="onAddTask()" color="primary"><mat-icon>add</mat-icon></button>
     </div>
-
-    <div class="example-container">
-        <h2>In Progress</h2>
-
-        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
-            [cdkDropListConnectedTo]="[todoList, doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
-
-            @for (item of inProgress; track $index) {
-
-            <app-task-card [title]="item.title" [content]="item.content" cdkDrag class="example-box"></app-task-card>
-
-
-            }
+    <div class="grid grid-cols-3 top-0 bg-inherit">
+        <div class="flex items-center"><span class="board-title">To do</span>
+            <!-- <button (click)="onAddTask()" class="hidden sm:block" mat-mini-fab
+                color="link"><mat-icon>add</mat-icon></button> -->
         </div>
+        <span class="board-title">In Progress
+
+        </span>
+        <span class="board-title">Done</span>
     </div>
-    <div class="example-container">
-        <h2>Done</h2>
+    <div class="grid grid-cols-3 h-full myclass w-full gap-3">
 
-        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-            [cdkDropListConnectedTo]="[todoList, inProgressList]" class="example-list"
-            (cdkDropListDropped)="drop($event)">
-
-            @for (item of done; track $index) {
-
-            <app-task-card [title]="item.title" [content]="item.content" cdkDrag class="example-box"></app-task-card>
+        <div class="example-container">
 
 
-            }
+            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" id="lista-todo"
+                [cdkDropListConnectedTo]="[doneList, inProgressList]" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+
+                @for (item of todo; track $index) {
+
+                <app-task-card [task]="item" cdkDrag class="example-box"></app-task-card>
+
+                }
+                <!-- <button (click)="onAddTask()"><mat-icon>add</mat-icon></button> -->
+            </div>
+
+
+        </div>
+        <div class="example-container">
+
+
+            <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress" id="lista-inProgress"
+                [cdkDropListConnectedTo]="[todoList, doneList]" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+
+                @for (item of inProgress; track $index) {
+
+                <app-task-card [task]="item" cdkDrag class="example-box"></app-task-card>
+
+
+                }
+            </div>
+
+        </div>
+
+        <div class="example-container">
+
+
+            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" id="lista-done"
+                [cdkDropListConnectedTo]="[todoList, inProgressList]" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+
+                @for (item of done; track $index) {
+
+                <app-task-card [task]="item" cdkDrag class="example-box"></app-task-card>
+
+
+                }
+            </div>
         </div>
     </div>
 </div>

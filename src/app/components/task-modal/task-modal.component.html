@@ -1,0 +1,18 @@
+<div class="my-modal">
+    <div class="flex flex-col justify-center items-center gap-2">
+        <span class="text-xl font-bold">{{data.task.title}}</span>
+        <span class="text-sm text-slate-400">Added: {{data.task.createdAt | date}} </span>
+    </div>
+    <div mat-dialog-content class="w-full flex text-center">
+        <div>
+            {{data.task.content}}
+        </div>
+    </div>
+    <span class="flex-1"></span>
+    <div class="flex justify-center">
+        <button mat-icon-button class="col-span-1 place-self-end" color="primary"
+            (click)="onEdit(data.task)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button class="col-span-1 place-self-end" color="accent"
+            (click)="onDelete(data.task.id)"><mat-icon>delete</mat-icon></button>
+    </div>
+</div>

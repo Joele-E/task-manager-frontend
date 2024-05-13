@@ -1,10 +1,22 @@
 <p>
-    <mat-toolbar color="primary">
-        <span routerLink="/" class="cursor-pointer">My Application</span>
+    <mat-toolbar color="primary" style="height: 64px;">
+        <span routerLink="/" class="cursor-pointer">TaskBoard</span>
         <span class="flex-1"></span>
-        <button mat-mini-fab color="link" [routerLink]="['/login']"><mat-icon>person</mat-icon></button>
-        <button mat-mini-fab color="link" [routerLink]="['/register']"><mat-icon>people</mat-icon></button>
-        <button mat-mini-fab color="link" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
-        <button mat-mini-fab color="link" [routerLink]="['/addtask']"><mat-icon>add</mat-icon></button>
+
+        <div class="flex flex-row gap-4">
+            @if (isLogged) {
+            <button [routerLink]="['/dashboard']"><mat-icon>dashboard</mat-icon></button>
+            <button [matMenuTriggerFor]="userMenu"><mat-icon>person</mat-icon></button>
+            <mat-menu #userMenu="matMenu">
+                <button mat-menu-item color="link" [routerLink]="['/addtask']">New Task</button>
+                <button mat-menu-item color="link" (click)="onLogout()">Log out</button>
+            </mat-menu>
+            } @else {
+
+            <button mat-raised-button color="link" [routerLink]="['/login']">Log in</button>
+            <button mat-raised-button color="link" [routerLink]="['/register']">Sign up</button>
+            }
+        </div>
+
     </mat-toolbar>
 </p>

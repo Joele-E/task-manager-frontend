@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { User } from '../models/User';
 import { AuthResponse } from '../models/AuthResponse';
 
@@ -9,6 +9,9 @@ import { AuthResponse } from '../models/AuthResponse';
 })
 export class AuthService {
   apiUrl: string = 'http://localhost:8080/api';
+  isLogged: BehaviorSubject<boolean> = new BehaviorSubject(
+    sessionStorage.getItem('id_token') ? true : false
+  );
   constructor(private http: HttpClient) {}
 
   authenticate(body: Partial<User>): Observable<AuthResponse> {
@@ -21,11 +24,14 @@ export class AuthService {
   }
   setSession(res: AuthResponse) {
     sessionStorage.setItem('id_token', res.token);
+    this.isLogged.next(true);
   }
-  idLoggedIn(): boolean {
+  isLoggedIn(): boolean {
+    //TODO validate token
     return sessionStorage.getItem('id_token') ? true : false;
   }
   logout() {
     sessionStorage.removeItem('id_token');
+    this.isLogged.next(false);
   }
 }

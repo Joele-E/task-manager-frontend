@@ -1,0 +1,15 @@
+<div class="my-modal">
+    <form (ngSubmit)="onSubmit()" [formGroup]="editTaskForm" class="flex flex-col justify-center">
+
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input type="text" matInput formControlName="title">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Content</mat-label>
+            <input type="text" matInput formControlName="content">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Confirm</button>
+
+    </form>
+</div>
