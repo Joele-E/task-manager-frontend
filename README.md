@@ -1,3 +1,3 @@
 # TaskManager
 
-Built with Angular and Spring
+Task manager frontend built with angular.
