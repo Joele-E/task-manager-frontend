@@ -1,14 +1,15 @@
 <p>
-    <mat-toolbar color="primary" style="height: 64px;">
+    <mat-toolbar color="primary" class="!h-[64px]">
         <span routerLink="/" class="cursor-pointer">TaskBoard</span>
         <span class="flex-1"></span>
 
         <div class="flex flex-row gap-4">
             @if (isLogged) {
+            <button [routerLink]="['/dashboard']" (click)="onAddTask()"><mat-icon>add</mat-icon></button>
             <button [routerLink]="['/dashboard']"><mat-icon>dashboard</mat-icon></button>
             <button [matMenuTriggerFor]="userMenu"><mat-icon>person</mat-icon></button>
             <mat-menu #userMenu="matMenu">
-                <button mat-menu-item color="link" [routerLink]="['/addtask']">New Task</button>
+                <!-- <button mat-menu-item color="link" [routerLink]="['/addtask']">New Task</button> -->
                 <button mat-menu-item color="link" (click)="onLogout()">Log out</button>
             </mat-menu>
             } @else {

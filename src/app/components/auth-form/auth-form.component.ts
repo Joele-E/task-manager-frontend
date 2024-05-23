@@ -73,7 +73,12 @@ export class AuthFormComponent {
         .pipe(first())
         .subscribe(() => {
           //set sessionstorage
-          this.router.navigate(['/dashboard']);
+          this.authService
+            .authenticate(this.formContent.value)
+            .pipe(first())
+            .subscribe(() => {
+              this.router.navigate(['/dashboard']);
+            });
         });
     }
   }

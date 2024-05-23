@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormModalComponent } from '../form-modal/form-modal.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { SnackbarService } from '../../services/snackbar.service';
+import { TaskFormComponent } from '../task-form/task-form.component';
 
 @Component({
   selector: 'app-navbar',
@@ -53,5 +54,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   onSnack() {
     this.snackService.openSnackBar();
+  }
+  onAddTask() {
+    this.dialog.open(TaskFormComponent, {});
   }
 }
