@@ -1,3 +1,3 @@
-# TaskManager
+# TaskBoard
 
-Task manager frontend built with angular.
+TaskBoard frontend built with angular.
