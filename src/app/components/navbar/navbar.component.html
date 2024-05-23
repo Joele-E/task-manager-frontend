@@ -7,11 +7,12 @@
             @if (isLogged) {
             <button [routerLink]="['/dashboard']" (click)="onAddTask()"><mat-icon>add</mat-icon></button>
             <button [routerLink]="['/dashboard']"><mat-icon>dashboard</mat-icon></button>
-            <button [matMenuTriggerFor]="userMenu"><mat-icon>person</mat-icon></button>
+            <button [routerLink]="['/dashboard']" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+            <!-- <button [matMenuTriggerFor]="userMenu"><mat-icon>person</mat-icon></button>
             <mat-menu #userMenu="matMenu">
-                <!-- <button mat-menu-item color="link" [routerLink]="['/addtask']">New Task</button> -->
+                <button mat-menu-item color="link" [routerLink]="['/addtask']">New Task</button>
                 <button mat-menu-item color="link" (click)="onLogout()">Log out</button>
-            </mat-menu>
+            </mat-menu> -->
             } @else {
 
             <button mat-raised-button color="link" [routerLink]="['/login']">Log in</button>
